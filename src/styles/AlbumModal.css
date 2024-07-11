@@ -1,0 +1,55 @@
+.modal {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal.album-modal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.album-grid {
+    animation: scaleUp 0.3s ease-in-out;
+    transition: 0.5;
+    padding: 2rem 0;
+    column-count: 3;
+    gap: 0.8rem;
+    width: 70%;
+    overflow-y: auto;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.4);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.album-grid img {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    margin-top: 0.5rem;
+}

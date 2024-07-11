@@ -1,0 +1,183 @@
+.modal {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.single-image-modal {
+    background-color: rgb(0, 0, 0);
+}
+
+.single-page-close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.single-image-modal .album-image > img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    position: relative;
+}
+
+.image-counter {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    z-index: 10;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+}
+
+.single-image-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image-container {
+    height: 64vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease-out;
+}
+
+.main-image.next {
+    animation: slideLeft 0.3s forwards;
+}
+
+.main-image.prev {
+    animation: slideRight 0.3s forwards;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.thumbnail-strip {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    max-width: 60%;
+    overflow-x: auto;
+}
+.thumbnail-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.album-image-box {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.album-image-box .thumbnail {
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    border-radius: 0.3rem;
+    opacity: 0.5;
+}
+
+.album-image-box .thumbnail.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+@media (max-width: 468px) {
+    .modal {
+        width: 100%;
+        position: relative;
+    }
+    .modal.single-image-modal {
+        background-color: transparent;
+        height: auto;
+    }
+
+    .image-counter {
+        bottom: 17%;
+        right: 1rem;
+        position: absolute;
+    }
+
+    .prev-btn {
+        left: 0;
+    }
+
+    .next-btn {
+        right: 0;
+    }
+
+    .thumbnail-strip {
+        display: none;
+    }
+
+    .single-page-close-btn {
+        display: none;
+    }
+}
