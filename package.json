@@ -2,7 +2,7 @@
   "homepage": "https://b-owl.github.io/overlay-image-gallery",
   "name": "overlay-image-gallery",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
