@@ -1,8 +1,8 @@
 # Overlay Image Gallery
 
-[![npm version](https://badge.fury.io/js/react-image-gallery.svg)](https://badge.fury.io/js/react-image-gallery)
-[![Download Count](http://img.shields.io/npm/dm/react-image-gallery.svg?style=flat)](https://www.npmjs.com/package/react-image-gallery)
-[![Bundle size](https://badgen.net/bundlephobia/minzip/react-image-gallery)](https://bundlephobia.com/package/react-image-gallery)
+[![npm version](https://badge.fury.io/js/overlay-image-gallery.svg)](https://badge.fury.io/js/overlay-image-gallery)
+[![Download Count](http://img.shields.io/npm/dm/overlay-image-gallery.svg?style=flat)](https://www.npmjs.com/package/overlay-image-gallery)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/overlay-image-gallery)](https://bundlephobia.com/package/overlay-image-gallery)
 
 
 
@@ -17,7 +17,7 @@
 
 <br/>
 
-[`Live Demo`](http://)
+[`Live Demo`](https://b-owl.github.io/overlay-image-gallery/)
 
 Overlay image gallery is a React multi step component for building image galleries and carousels
 
@@ -69,11 +69,28 @@ export default App;
   - for example: `width(600)`
 - `grid`: String, default `v1`
   - it accept `v1` and `v2` 
-- `fullScreen`: Boolean, its not require, when is true, the width and height will equal to 100%
+- `fullScreen`: Boolean, it is optional. When set to true, the width and height will both be 100%.
 
-### License
-This project is licensed under the MIT License.
-<br/>
-Contributions are welcome! Please feel free to submit a Pull Request.
-Support
-If you have any questions or need help integrating the package, please open an issue in the GitHub repository.
+## Contributing
+
+Each pull request (PR) should focus on a specific issue. Avoid combining multiple features, chores, refactors, or enhancements in one PR. Clearly describe your feature or implementation. For major changes or uncertain usefulness, open an issue first and seek feedback.
+
+- Follow eslint provided
+- Write [clean](https://github.com/ryanmcdermott/clean-code-javascript) code
+
+## Run it locally
+
+```
+git clone https://github.com/b-owl/overlay-image-gallery.git
+cd overlay-image-gallery
+npm install
+npm run dev
+```
+
+Then open [`localhost:3000`](http://localhost:3000) in a browser.
+
+## License
+
+MIT
+
+
