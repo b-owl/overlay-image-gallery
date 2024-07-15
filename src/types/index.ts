@@ -1,9 +1,23 @@
-export type ImageGalleryProps = {
+type BaseImageGalleryProps = {
   images: string[];
-  width: number;
-  height: number;
   grid: "v1" | "v2";
 };
+
+type FullScreenProps = {
+  fullScreen: true;
+  width?: never;
+  height?: never;
+};
+
+type NonFullScreenProps = {
+  fullScreen?: false;
+  width: number;
+  height: number;
+};
+
+export type ImageGalleryProps = BaseImageGalleryProps &
+  (FullScreenProps | NonFullScreenProps);
+
 export type AlbumModalProps = {
   images: string[];
   onClose: () => void;

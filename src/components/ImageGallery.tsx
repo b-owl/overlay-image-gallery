@@ -9,7 +9,7 @@ import SingleImageModal from "./SingleImageModal";
 import "../styles/ImageGallery.css";
 
 const ImageGallery = (props: ImageGalleryProps) => {
-  const { images, width, height, grid } = props;
+  const { images, width, height, grid, fullScreen } = props;
 
   const [showAlbumModal, setShowAlbumModal] = useState(false);
   const [showSingleImageModal, setShowSingleImageModal] = useState(false);
@@ -67,8 +67,8 @@ const ImageGallery = (props: ImageGalleryProps) => {
   return (
     <section
       style={{
-        width: `${width}%`,
-        height: `${height}%`,
+        width: `${fullScreen ? "100%" : width}px`,
+        height: `${fullScreen ? "100%" : height}px`,
       }}
       className={`image-gallery`}
     >

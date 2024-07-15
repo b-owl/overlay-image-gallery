@@ -21,7 +21,7 @@ function App() {
   ];
 
   return (
-    <OverlayGallery grid="v2" width={60} height={100} images={imagesList} />
+    <OverlayGallery fullScreen grid="v1" images={imagesList} />
   );
 }
 
