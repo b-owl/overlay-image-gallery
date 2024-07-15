@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["src/007acc*"]
+      "*": ["src/*"]
     },
     "target": "es5",
     "module": "esnext",
@@ -13,7 +13,9 @@
     "declaration": true,
     "declarationDir": "./dist/types",
     "emitDeclarationOnly": false,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true,
+    "sourceMap": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
