@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useRef, useEffect } from "react";
 import { AlbumModalProps } from "../types";
 import "../styles/AlbumModal.css";
 
@@ -11,7 +10,26 @@ const getRandomHeight = () => {
 };
 
 const AlbumModal = (props: AlbumModalProps) => {
-  const { images, onClose, onImageClick } = props;
+  const { images, onClose, onImageClick, selectedImageIndex } = props;
+  const selectedImageRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (selectedImageRef.current) {
+      setTimeout(() => {
+        selectedImageRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 150);
+      selectedImageRef.current.classList.add("winking-effect");
+      setTimeout(() => {
+        if (selectedImageRef.current) {
+          selectedImageRef.current.classList.remove("winking-effect");
+        }
+      }, 2200);
+    }
+  }, [selectedImageIndex]);
+
   return (
     <div className="modal album-modal">
       <button className="close-btn" onClick={onClose}>
@@ -19,13 +37,15 @@ const AlbumModal = (props: AlbumModalProps) => {
       </button>
       <div className="album-grid">
         {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={image}
-            onClick={() => onImageClick(index)}
-            style={{ height: getRandomHeight() }}
-          />
+          <div key={index} className="img-box">
+            <img
+              src={image}
+              alt={image}
+              onClick={() => onImageClick(index)}
+              style={{ height: getRandomHeight() }}
+              ref={index === selectedImageIndex ? selectedImageRef : null}
+            />
+          </div>
         ))}
       </div>
     </div>

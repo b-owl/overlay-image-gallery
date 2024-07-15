@@ -27,7 +27,11 @@ const ImageGallery = (props: ImageGalleryProps) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const openAlbumModal = () => setShowAlbumModal(true);
+  const openAlbumModal = (index: number) => {
+    setSelectedImageIndex(index);
+    setShowAlbumModal(true);
+  };
+
   const closeAlbumModal = () => setShowAlbumModal(false);
   const openSingleImageModal = (index: number) => {
     setSelectedImageIndex(index);
@@ -74,7 +78,11 @@ const ImageGallery = (props: ImageGalleryProps) => {
     >
       <div className={`image-grid ${gridClassName}`}>
         {images.slice(0, 10).map((image, index) => (
-          <div key={index} onClick={openAlbumModal} className="img-box">
+          <div
+            key={index}
+            onClick={() => openAlbumModal(index)}
+            className="img-box"
+          >
             <img key={index} src={image} alt={image} />
 
             {images.length > 10 && index === 9 && (
@@ -89,6 +97,7 @@ const ImageGallery = (props: ImageGalleryProps) => {
           images={images}
           onClose={closeAlbumModal}
           onImageClick={openSingleImageModal}
+          selectedImageIndex={selectedImageIndex}
         />
       )}
 

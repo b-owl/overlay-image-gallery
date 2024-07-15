@@ -22,6 +22,7 @@ export type AlbumModalProps = {
   images: string[];
   onClose: () => void;
   onImageClick: (index: number) => void;
+  selectedImageIndex: number;
 };
 
 export type SingleImageModalProps = {

@@ -46,10 +46,44 @@
     }
 }
 
-.album-grid img {
+.album-grid .img-box {
+    overflow: hidden;
     display: inline-block;
     width: 100%;
     cursor: pointer;
-    border-radius: 0.3rem;
     margin-top: 0.5rem;
+    border-radius: 0.3rem;
+}
+.album-grid img {
+    transition: all 0.3s ease-in-out;
+    border-radius: 0.3rem;
+    width: 100%;
+    height: 100%;
+}
+
+.album-grid .img-box:hover img {
+    transform: scale(1.3);
+}
+
+@keyframes winking {
+    0% {
+        opacity: 1;
+        border: 2px solid #007bff;
+    }
+    40% {
+        opacity: 0.5;
+        border: 2px solid transparent;
+    }
+    70% {
+        opacity: 1;
+        border: 2px solid #007bff;
+    }
+    100% {
+        opacity: 1;
+        border: 2px solid transparent;
+    }
+}
+
+.winking-effect {
+    animation: winking 2.2s ease-in-out;
 }
