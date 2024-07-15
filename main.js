@@ -194,7 +194,8 @@
   var css_248z = "*,\r\n*::after,\r\n*::before {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\nhtml,\r\nbody {\r\n    overflow-x: hidden;\r\n    font-family: \"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\nimg {\r\n    background-size: cover;\r\n    object-fit: cover;\r\n    background-position: center;\r\n    background-repeat: no-repeat;\r\n}\r\n";
   styleInject(css_248z);
 
-  ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(React.StrictMode, null,
+  var root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(React.createElement(React.StrictMode, null,
       React.createElement(App, null)));
 
 })(React, ReactDOM);
