@@ -21,7 +21,17 @@ function App() {
   ];
 
   return (
-    <OverlayGallery width={650} height={400} grid="v2" images={imagesList} />
+    <div
+      style={{
+        width: "100%",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "cneter",
+      }}
+    >
+      <OverlayGallery width={650} height={400} grid="v2" images={imagesList} />
+    </div>
   );
 }
 

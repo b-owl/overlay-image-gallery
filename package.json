@@ -1,4 +1,5 @@
 {
+  "homepage": "https://b-owl.github.io/overlay-image-gallery",
   "name": "overlay-image-gallery",
   "private": false,
   "version": "1.0.2",
@@ -11,6 +12,8 @@
     "dist"
   ],
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --port 3000",
     "build": "rollup -c",
     "prepare": "npm run build",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-html": "^1.0.3",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -31,6 +35,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "gh-pages": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
