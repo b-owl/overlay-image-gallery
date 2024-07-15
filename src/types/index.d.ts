@@ -6,15 +6,15 @@ export type ImageGalleryProps = {
 };
 export type AlbumModalProps = {
   images: string[];
-  onClose: MouseEventHandler<HTMLButtonElement>;
+  onClose: () => void;
   onImageClick: (index: number) => void;
 };
 
 export type SingleImageModalProps = {
   images: string[];
   currentIndex: number;
-  onClose: MouseEventHandler<HTMLButtonElement>;
-  onPrev: MouseEventHandler<HTMLButtonElement>;
-  onNext: MouseEventHandler<HTMLButtonElement>;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
   onThumbnailClick: (index: number) => void;
 };

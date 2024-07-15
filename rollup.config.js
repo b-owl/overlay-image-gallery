@@ -22,6 +22,7 @@ export default {
     commonjs(),
     typescript({
       tsconfig: "./tsconfig.json",
+      useTsconfigDeclarationDir: true,
       clean: true,
     }),
     postcss(),
