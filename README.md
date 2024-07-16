@@ -14,7 +14,7 @@
 
 [`Live Demo`](https://b-owl.github.io/overlay-image-gallery/)
 
-## Getting started
+## Installation
 
 To get started, install the package using npm or yarn:
 
@@ -28,7 +28,7 @@ npm install overlay-image-gallery
 yarn add overlay-image-gallery
 ```
 
-### Usage
+## Usage
 
 Here's a quick example of how to use the ImageGallery component in your React application:
 
@@ -47,16 +47,15 @@ const App = () => {
 export default App;
 ```
 
-### Props
+## Props
 
-- `images`: (Array), required: Array of image URLs.
-- `width`: (Number, px): Width of the gallery, e.g., width={600}.
-  - for example: `width(600)`
-- `height`: (Number, px): Height of the gallery, e.g., height={600}.
-  - for example: `width(600)`
-- `grid`: (String), Layout style, default is v1.
-  - Options are `v1` and `v2`.
-- `fullScreen`: (Boolean), Optional. If true, the gallery will occupy full screen width and height.
+| **Prop**        | **Type**       | **Description**                                                       |
+|-----------------|----------------|-----------------------------------------------------------------------|
+| `images`        | Array          | **(Required)** Array of image URLs.                                    |
+| `width`         | Number (px)    | Width of the gallery, e.g., width={600}.                               |
+| `height`        | Number (px)    | Height of the gallery, e.g., height={600}.                             |
+| `grid`          | String         | Layout style, default is `v1`. Options are `v1` and `v2`.                |
+| `fullScreen`    | Boolean        | **(Optional)** If true, the gallery will occupy full screen width and height. |
 
 ## Contributing
 
