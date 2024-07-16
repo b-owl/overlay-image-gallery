@@ -1,8 +1,9 @@
 {
   "homepage": "https://b-owl.github.io/overlay-image-gallery",
   "name": "overlay-image-gallery",
+  "description": "Overlay Image Gallery is a multi-step image gallery that allows users to click or swipe to navigate between images.",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -10,6 +11,29 @@
   "license": "MIT",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "overlay-image-gallery",
+    "image-gallery",
+    "preview-image-gallery",
+    "preview-images",
+    "react",
+    "nextjs",
+    "typescript",
+    "drag",
+    "react-component",
+    "image-gallery",
+    "video-gallery",
+    "carousel",
+    "multiple items",
+    "slide-show",
+    "slider",
+    "swipe",
+    "touch",
+    "gallery",
+    "responsive",
+    "mobile-friendly",
+    "tablet-friendly"
   ],
   "scripts": {
     "predeploy": "npm run build",
