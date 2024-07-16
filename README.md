@@ -4,57 +4,44 @@
 [![Download Count](http://img.shields.io/npm/dm/overlay-image-gallery.svg?style=flat)](https://www.npmjs.com/package/overlay-image-gallery)
 [![Bundle size](https://badgen.net/bundlephobia/minzip/overlay-image-gallery)](https://bundlephobia.com/package/overlay-image-gallery)
 
+###### Overlay Image Gallery is a versatile React component designed for creating stunning image galleries and carousels effortlessly.
 
+## Preview
 
-### Here is a preview of the project
-
-<div style="display: flex; justify-content: center; align-items: center; height: auto;">
-<video width="600" autoplay loop>
-  <source src="https://raw.githubusercontent.com/b-owl/overlay-image-gallery/main/public/preview.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-</div>
+![Preview](https://camo.githubusercontent.com/f3a6d89d038ff0abb80bae4493227ea6f00687843692cf3a2344246294b5e2da/68747470733a2f2f64726976652e676f6f676c652e636f6d2f75633f6578706f72743d766965772669643d316e554a597659737158484c683844784652323367763464467549564f36337654)
 
 <br/>
 
 [`Live Demo`](https://b-owl.github.io/overlay-image-gallery/)
 
-Overlay image gallery is a React multi step component for building image galleries and carousels
-
 ## Getting started
 
-Install the package using npm:
+To get started, install the package using npm or yarn:
 
 ```bash
 npm install overlay-image-gallery
 ```
 
-Or using yarn:
+###### Or
 
 ```bash
 yarn add overlay-image-gallery
 ```
 
-### Usage :
+### Usage
 
+Here's a quick example of how to use the ImageGallery component in your React application:
 
 ```js
-import { ImageGallery } from 'overlay-image-gallery';
+import { ImageGallery } from "overlay-image-gallery";
 const App = () => {
-const images = [
-'https://example.com/image1.jpg',
-'https://example.com/image2.jpg',
-'https://example.com/image3.jpg',
-];
+  const images = [
+    "https://example.com/image1.jpg",
+    "https://example.com/image2.jpg",
+    "https://example.com/image3.jpg",
+  ];
 
-return (
-   <ImageGallery
-      images={images}
-      width={800}
-      height={600}
-      grid="v1"
-    />
-);
+  return <ImageGallery images={images} width={800} height={600} grid="v1" />;
 };
 
 export default App;
@@ -62,23 +49,23 @@ export default App;
 
 ### Props
 
-- `images`: (required) Array of images url,
-- `width`: Number, (px)
+- `images`: (Array), required: Array of image URLs.
+- `width`: (Number, px): Width of the gallery, e.g., width={600}.
   - for example: `width(600)`
-- `height`: Number, (px)
+- `height`: (Number, px): Height of the gallery, e.g., height={600}.
   - for example: `width(600)`
-- `grid`: String, default `v1`
-  - it accept `v1` and `v2` 
-- `fullScreen`: Boolean, it is optional. When set to true, the width and height will both be 100%.
+- `grid`: (String), Layout style, default is v1.
+  - Options are `v1` and `v2`.
+- `fullScreen`: (Boolean), Optional. If true, the gallery will occupy full screen width and height.
 
 ## Contributing
 
-Each pull request (PR) should focus on a specific issue. Avoid combining multiple features, chores, refactors, or enhancements in one PR. Clearly describe your feature or implementation. For major changes or uncertain usefulness, open an issue first and seek feedback.
+We welcome contributions! When making a pull request, please focus on a specific issue. Avoid combining multiple changes in one PR. Describe your feature or implementation clearly. For major changes or if you're unsure about the usefulness of a change, please open an issue first to discuss it.
 
 - Follow eslint provided
 - Write [clean](https://github.com/ryanmcdermott/clean-code-javascript) code
 
-## Run it locally
+## Running Locally
 
 ```
 git clone https://github.com/b-owl/overlay-image-gallery.git
@@ -91,6 +78,4 @@ Then open [`localhost:3000`](http://localhost:3000) in a browser.
 
 ## License
 
-MIT
-
-
+This project is licensed under the MIT License.
