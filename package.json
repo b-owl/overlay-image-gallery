@@ -19,6 +19,10 @@
     "prepare": "npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b-owl/overlay-image-gallery.git"
+  },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
