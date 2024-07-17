@@ -20,6 +20,9 @@
       "types": "./dist/types/index.d.ts"
     }
   },
+  "engines": {
+    "node": ">=18.17.1"
+  },
   "keywords": [
     "overlay-image-gallery",
     "image-gallery",
