@@ -35,34 +35,36 @@ const SingleImageModal = (props: SingleImageModalProps) => {
   };
 
   return (
-    <div className="modal single-image-modal">
-      <button className="single-page-close-btn" onClick={onClose}>
+    <div className="oig-modal single-image-oig-modal">
+      <button className="single-page-oig-close-btn" onClick={onClose}>
         Back
       </button>
-      <div className="main-image-container">
+      <div className="oig-main-image-container">
         <img
           src={currentImage}
           alt={currentImage}
-          className={`main-image ${direction}`}
+          className={`oig-main-image ${direction}`}
           onAnimationEnd={() => setDirection(null)}
         />
-        <div className="image-counter">
+        <div className="oig-image-counter">
           {currentIndex + 1}/{images.length}
         </div>
       </div>
-      <button className="nav-btn prev-btn" onClick={handlePrev}>
+      <button className="oig-nav-btn oig-prev-btn" onClick={handlePrev}>
         ‹
       </button>
-      <button className="nav-btn next-btn" onClick={handleNext}>
+      <button className="oig-nav-btn oig-next-btn" onClick={handleNext}>
         ›
       </button>
-      <div className="thumbnail-strip" ref={thumbnailStripRef}>
+      <div className="oig-thumbnail-strip" ref={thumbnailStripRef}>
         {images.map((image, index) => (
           <div className="album-image-box" key={index}>
             <img
               src={image}
               alt={image}
-              className={`thumbnail ${index === currentIndex ? "active" : ""}`}
+              className={`oig-thumbnail ${
+                index === currentIndex ? "active" : ""
+              }`}
               onClick={() => onThumbnailClick(index)}
             />
           </div>

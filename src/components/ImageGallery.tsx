@@ -74,19 +74,19 @@ const ImageGallery = (props: ImageGalleryProps) => {
         width: `${fullScreen ? "100%" : width}px`,
         height: `${fullScreen ? "100%" : height}px`,
       }}
-      className={`image-gallery`}
+      className={`oig-image-gallery`}
     >
-      <div className={`image-grid ${gridClassName}`}>
+      <div className={`oig-image-grid ${gridClassName}`}>
         {images.slice(0, 10).map((image, index) => (
           <div
             key={index}
             onClick={() => openAlbumModal(index)}
-            className="img-box"
+            className="oig-img-box"
           >
             <img key={index} src={image} alt={image} />
 
             {images.length > 10 && index === 9 && (
-              <div className="last-image">+{images.length - 10} Photos</div>
+              <div className="oig-last-image">+{images.length - 10} Photos</div>
             )}
           </div>
         ))}

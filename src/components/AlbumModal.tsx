@@ -31,13 +31,13 @@ const AlbumModal = (props: AlbumModalProps) => {
   }, [selectedImageIndex]);
 
   return (
-    <div className="modal album-modal">
-      <button className="close-btn" onClick={onClose}>
+    <div className="oig-modal album-oig-modal">
+      <button className="oig-close-btn" onClick={onClose}>
         ×
       </button>
-      <div className="album-grid">
+      <div className="oig-album-grid">
         {images.map((image, index) => (
-          <div key={index} className="img-box">
+          <div key={index} className="oig-img-box">
             <img
               src={image}
               alt={image}

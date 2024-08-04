@@ -1,8 +1,8 @@
 # Overlay Image Gallery
 
-[![npm version](https://badge.fury.io/js/overlay-image-gallery.svg)](https://badge.fury.io/js/overlay-image-gallery)
-[![Download Count](http://img.shields.io/npm/dm/overlay-image-gallery.svg?style=flat)](https://www.npmjs.com/package/overlay-image-gallery)
-[![Bundle size](https://badgen.net/bundlephobia/minzip/overlay-image-gallery)](https://bundlephobia.com/package/overlay-image-gallery)
+[![npm version](https://badge.fury.io/js/overlay-oig-image-gallery.svg)](https://badge.fury.io/js/overlay-oig-image-gallery)
+[![Download Count](http://img.shields.io/npm/dm/overlay-oig-image-gallery.svg?style=flat)](https://www.npmjs.com/package/overlay-oig-image-gallery)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/overlay-oig-image-gallery)](https://bundlephobia.com/package/overlay-oig-image-gallery)
 
 ###### Overlay Image Gallery is a versatile React component designed for creating stunning image galleries and carousels effortlessly.
 
@@ -12,20 +12,20 @@
 
 <br/>
 
-[`Live Demo`](https://b-owl.github.io/overlay-image-gallery/)
+[`Live Demo`](https://b-owl.github.io/overlay-oig-image-gallery/)
 
 ## Installation
 
 To get started, install the package using npm or yarn:
 
 ```bash
-npm install overlay-image-gallery
+npm install overlay-oig-image-gallery
 ```
 
 ###### Or
 
 ```bash
-yarn add overlay-image-gallery
+yarn add overlay-oig-image-gallery
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ yarn add overlay-image-gallery
 Here's a quick example of how to use the ImageGallery component in your React application:
 
 ```js
-import { ImageGallery } from "overlay-image-gallery";
+import { ImageGallery } from "overlay-oig-image-gallery";
 const App = () => {
   const images = [
     "https://example.com/image1.jpg",
@@ -49,13 +49,13 @@ export default App;
 
 ## Props
 
-| **Prop**        | **Type**       | **Description**                                                       |
-|-----------------|----------------|-----------------------------------------------------------------------|
-| `images`        | Array          | **(Required)** Array of image URLs.                                    |
-| `width`         | Number (px)    | Width of the gallery, e.g., width={600}.                               |
-| `height`        | Number (px)    | Height of the gallery, e.g., height={600}.                             |
-| `grid`          | String         | Layout style, default is `v1`. Options are `v1` and `v2`.                |
-| `fullScreen`    | Boolean        | **(Optional)** If true, the gallery will occupy full screen width and height. |
+| **Prop**     | **Type**    | **Description**                                                               |
+| ------------ | ----------- | ----------------------------------------------------------------------------- |
+| `images`     | Array       | **(Required)** Array of image URLs.                                           |
+| `width`      | Number (px) | Width of the gallery, e.g., width={600}.                                      |
+| `height`     | Number (px) | Height of the gallery, e.g., height={600}.                                    |
+| `grid`       | String      | Layout style, default is `v1`. Options are `v1` and `v2`.                     |
+| `fullScreen` | Boolean     | **(Optional)** If true, the gallery will occupy full screen width and height. |
 
 ## Contributing
 
@@ -67,8 +67,8 @@ We welcome contributions! When making a pull request, please focus on a specific
 ## Running Locally
 
 ```
-git clone https://github.com/b-owl/overlay-image-gallery.git
-cd overlay-image-gallery
+git clone https://github.com/b-owl/overlay-oig-image-gallery.git
+cd overlay-oig-image-gallery
 npm install
 npm run dev
 ```
