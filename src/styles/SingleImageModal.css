@@ -18,6 +18,8 @@
   position: fixed;
   top: 5%;
   right: 4%;
+  width: 0.9rem;
+  height: 0.9rem;
   font-size: 14px;
   color: white;
   background: none;
@@ -52,6 +54,9 @@
   cursor: pointer;
   z-index: 10;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .single-image-oig-modal {
@@ -143,10 +148,14 @@
 
 .oig-prev-btn {
   left: 20px;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .oig-next-btn {
   right: 20px;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 @media (max-width: 468px) {
