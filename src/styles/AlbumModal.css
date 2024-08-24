@@ -1,5 +1,5 @@
 .oig-modal {
-  z-index: 20;
+  z-index: 200;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   padding: 2rem 0;
   column-count: 3;
   gap: 0.8rem;
-  width: 70%;
+  width: 80%;
   overflow-y: auto;
 }
 
@@ -86,4 +86,10 @@
 
 .winking-effect {
   animation: winking 2.2s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  .oig-album-grid {
+    column-count: 2;
+  }
 }
