@@ -1,6 +1,6 @@
 {
-  "homepage": "https://b-owl.github.io/overlay-oig-image-gallery",
-  "name": "overlay-oig-image-gallery",
+  "homepage": "https://b-owl.github.io/overlay-image-gallery",
+  "name": "overlay-image-gallery",
   "description": "Overlay Image Gallery is a multi-step image gallery that allows users to click or swipe to navigate between images.",
   "private": false,
   "version": "1.0.12",
@@ -24,16 +24,16 @@
     "node": ">=18.17.1"
   },
   "keywords": [
-    "overlay-oig-image-gallery",
-    "oig-image-gallery",
-    "preview-oig-image-gallery",
+    "overlay-image-gallery",
+    "image-gallery",
+    "preview-image-gallery",
     "preview-images",
     "react",
     "nextjs",
     "typescript",
     "drag",
     "react-component",
-    "oig-image-gallery",
+    "image-gallery",
     "video-gallery",
     "carousel",
     "multiple items",
@@ -56,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/b-owl/overlay-oig-image-gallery.git"
+    "url": "https://github.com/b-owl/overlay-image-gallery.git"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
