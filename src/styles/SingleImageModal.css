@@ -67,17 +67,19 @@
 }
 
 .oig-main-image-container {
-  height: 64vh;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
+  width: 70%;
+  height: 64vh;
 }
 
 .oig-main-image {
-  height: 28rem;
-  object-fit: contain;
+  /* height: 100%;
+  width: 100%;   */
+  /* object-fit: contain; */
   transition: transform 0.3s ease-out;
 }
 
@@ -114,7 +116,7 @@
   left: 0;
   right: 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 10px;

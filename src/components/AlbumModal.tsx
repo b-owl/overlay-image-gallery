@@ -2,12 +2,12 @@ import React, { useRef, useEffect } from "react";
 import { AlbumModalProps } from "../types";
 import "../styles/AlbumModal.css";
 
-const getRandomHeight = () => {
-  const min = 12;
-  const max = 20;
-  const height = Math.random() * (max - min) + min;
-  return `${height}rem`;
-};
+// const getRandomHeight = () => {
+//   const min = 12;
+//   const max = 20;
+//   const height = Math.random() * (max - min) + min;
+//   return `${height}rem`;
+// };
 
 const AlbumModal = (props: AlbumModalProps) => {
   const { images, onClose, onImageClick, selectedImageIndex } = props;
@@ -55,7 +55,7 @@ const AlbumModal = (props: AlbumModalProps) => {
               src={image}
               alt={image}
               onClick={() => onImageClick(index)}
-              style={{ height: getRandomHeight() }}
+              // style={{ height: getRandomHeight() }}
               ref={index === selectedImageIndex ? selectedImageRef : null}
             />
           </div>
