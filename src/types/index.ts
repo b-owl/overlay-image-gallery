@@ -30,5 +30,5 @@ export type SingleImageModalProps = {
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
-  onThumbnailClick: (index: number) => void;
+  onThumbnailClick?: (index: number) => void;
 };

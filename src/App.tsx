@@ -15,6 +15,13 @@ function App() {
     "https://images.pexels.com/photos/5709945/pexels-photo-5709945.jpeg?auto=compress&cs=tinysrgb&w=600",
     "https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=600",
     "https://images.pexels.com/photos/160729/wall-fox-lasiommata-megera-butterfly-hand-160729.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/13130413/pexels-photo-13130413.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/15447232/pexels-photo-15447232/free-photo-of-building-with-a-blue-door.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/160729/wall-fox-lasiommata-megera-butterfly-hand-160729.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/5709945/pexels-photo-5709945.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/3155894/pexels-photo-3155894.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "https://images.pexels.com/photos/160729/wall-fox-lasiommata-megera-butterfly-hand-160729.jpeg?auto=compress&cs=tinysrgb&w=600",
   ];
 
   return (
@@ -27,7 +34,7 @@ function App() {
         justifyContent: "cneter",
       }}
     >
-      <OverlayGallery width={650} height={400} grid="v2" images={imagesList} />
+      <OverlayGallery width={650} height={400} grid="v1" images={imagesList} />
     </div>
   );
 }

@@ -1,52 +1,67 @@
-import React from "react";
-
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { SingleImageModalProps } from "../types";
 import "../styles/SingleImageModal.css";
 
 const SingleImageModal = (props: SingleImageModalProps) => {
   const { images, currentIndex, onPrev, onNext, onThumbnailClick } = props;
-  const currentImage = images[currentIndex];
-  const thumbnailStripRef = useRef<HTMLDivElement>(null);
+  const [startX, setStartX] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
+  const [activeIndex, setActiveIndex] = useState(currentIndex);
+  const imageRefs = useRef<HTMLImageElement[]>([]);
 
   useEffect(() => {
-    if (thumbnailStripRef.current) {
-      const activeThumb = thumbnailStripRef.current.querySelector(".active");
-      if (activeThumb) {
-        activeThumb.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest",
-        });
-      }
-    }
+    setActiveIndex(currentIndex);
   }, [currentIndex]);
 
-  const handleNext = () => {
-    // setDirection("next");
-    onNext();
+  useEffect(() => {
+    if (imageRefs.current[activeIndex]) {
+      imageRefs.current[activeIndex].scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [activeIndex]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
   };
 
-  const handlePrev = () => {
-    // setDirection("prev");
-    onPrev();
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const moveX = e.touches[0].clientX;
+    const diffX = startX - moveX;
+
+    if (Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        onNext();
+        setDirection("next");
+      } else {
+        onPrev();
+        setDirection("prev");
+      }
+      setStartX(moveX);
+    }
   };
 
   return (
     <div className="oig-modal single-image-oig-modal">
-      <div className="oig-main-image-container">
+      <div
+        className="oig-main-image-container"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         <img
-          src={currentImage}
-          alt={currentImage}
+          src={images[activeIndex]}
+          alt={`Image ${activeIndex + 1}`}
           className={`oig-main-image ${direction}`}
+          ref={(el) => (imageRefs.current[activeIndex] = el!)}
           onAnimationEnd={() => setDirection(null)}
         />
         <div className="oig-image-counter">
-          {currentIndex + 1}/{images.length}
+          {activeIndex + 1}/{images.length}
         </div>
       </div>
-      <button className="oig-nav-btn oig-prev-btn" onClick={handlePrev}>
+      <button className="oig-nav-btn oig-prev-btn" onClick={onPrev}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -62,7 +77,7 @@ const SingleImageModal = (props: SingleImageModalProps) => {
           </g>
         </svg>
       </button>
-      <button className="oig-nav-btn oig-next-btn" onClick={handleNext}>
+      <button className="oig-nav-btn oig-next-btn" onClick={onNext}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -78,20 +93,22 @@ const SingleImageModal = (props: SingleImageModalProps) => {
           </g>
         </svg>
       </button>
-      <div className="oig-thumbnail-strip" ref={thumbnailStripRef}>
-        {images.map((image, index) => (
-          <div className="album-image-box" key={index}>
-            <img
-              src={image}
-              alt={image}
-              className={`oig-thumbnail ${
-                index === currentIndex ? "active" : ""
-              }`}
-              onClick={() => onThumbnailClick(index)}
-            />
-          </div>
-        ))}
-      </div>
+      {window.innerWidth > 468 && (
+        <div className="oig-thumbnail-strip">
+          {images.map((image, index) => (
+            <div className="album-image-box" key={index}>
+              <img
+                src={image}
+                alt={`Thumbnail ${index + 1}`}
+                className={`oig-thumbnail ${
+                  index === activeIndex ? "active" : ""
+                }`}
+                onClick={() => onThumbnailClick && onThumbnailClick(index)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

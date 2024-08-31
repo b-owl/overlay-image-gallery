@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageGalleryProps } from "../types";
 
 import AlbumModal from "./AlbumModal";
+import SingleImageModal from "./SingleImageModal";
 
 import "../styles/ImageGallery.css";
 
@@ -10,17 +11,17 @@ const ImageGallery = (props: ImageGalleryProps) => {
 
   const [showAlbumModal, setShowAlbumModal] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  // const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // useEffect(() => {
-  //   const checkMobile = () => {
-  //     setIsMobile(window.innerWidth <= 468);
-  //   };
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 468);
+    };
 
-  //   checkMobile();
-  //   window.addEventListener("resize", checkMobile);
-  //   return () => window.removeEventListener("resize", checkMobile);
-  // }, []);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const openAlbumModal = (index: number) => {
     setSelectedImageIndex(index);
@@ -30,6 +31,24 @@ const ImageGallery = (props: ImageGalleryProps) => {
   const closeAlbumModal = () => setShowAlbumModal(false);
 
   const gridClassName = grid === "v2" ? "grid-version2" : "grid-version1";
+
+  if (isMobile) {
+    return (
+      <SingleImageModal
+        images={images}
+        currentIndex={selectedImageIndex}
+        onClose={() => setShowAlbumModal(false)}
+        onPrev={() =>
+          setSelectedImageIndex(
+            (prev) => (prev - 1 + images.length) % images.length
+          )
+        }
+        onNext={() =>
+          setSelectedImageIndex((prev) => (prev + 1) % images.length)
+        }
+      />
+    );
+  }
 
   return (
     <section
@@ -46,8 +65,7 @@ const ImageGallery = (props: ImageGalleryProps) => {
             onClick={() => openAlbumModal(index)}
             className="oig-img-box"
           >
-            <img key={index} src={image} alt={image} />
-
+            <img key={index} src={image} alt={`Image ${index + 1}`} />
             {images.length > 10 && index === 9 && (
               <div className="oig-last-image">+{images.length - 10} Photos</div>
             )}
