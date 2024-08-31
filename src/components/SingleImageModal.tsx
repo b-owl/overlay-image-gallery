@@ -5,8 +5,7 @@ import { SingleImageModalProps } from "../types";
 import "../styles/SingleImageModal.css";
 
 const SingleImageModal = (props: SingleImageModalProps) => {
-  const { images, currentIndex, onClose, onPrev, onNext, onThumbnailClick } =
-    props;
+  const { images, currentIndex, onPrev, onNext, onThumbnailClick } = props;
   const currentImage = images[currentIndex];
   const thumbnailStripRef = useRef<HTMLDivElement>(null);
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
@@ -25,20 +24,17 @@ const SingleImageModal = (props: SingleImageModalProps) => {
   }, [currentIndex]);
 
   const handleNext = () => {
-    setDirection("next");
+    // setDirection("next");
     onNext();
   };
 
   const handlePrev = () => {
-    setDirection("prev");
+    // setDirection("prev");
     onPrev();
   };
 
   return (
     <div className="oig-modal single-image-oig-modal">
-      <button className="single-page-oig-close-btn" onClick={onClose}>
-        Back
-      </button>
       <div className="oig-main-image-container">
         <img
           src={currentImage}

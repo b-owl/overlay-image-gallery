@@ -53,17 +53,37 @@
 }
 
 .album-modal-close-btn {
-  background: none;
   border: none;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  color: #495057;
-  padding: 0.5rem;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
   transition: background-color 0.2s;
 }
 
+.album-modal-back-to-gallery-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.album-modal-back-to-gallery-btn:hover {
+  color: #007bff;
+}
+
 .album-modal-close-btn:hover {
-  background-color: #e9ecef;
+  color: #007bff;
 }
 
 .album-modal-grid {
@@ -77,6 +97,7 @@
 .album-modal-img-box {
   break-inside: avoid;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .album-modal-img-box img {
@@ -87,6 +108,50 @@
 
 .album-modal-img-box:hover img {
   transform: scale(1.05);
+}
+
+.album-modal-single-image {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.oig-main-image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.oig-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: #495057;
+}
+
+.oig-prev-btn {
+  left: -50px;
+}
+
+.oig-next-btn {
+  right: -50px;
+}
+
+.oig-nav-btn svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.oig-nav-btn:hover {
+  color: #007bff;
 }
 
 @keyframes album-modal-fadeIn {

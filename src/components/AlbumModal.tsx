@@ -1,14 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import { AlbumModalProps } from "../types";
 import "../styles/AlbumModal.css";
+import SingleImageModal from "./SingleImageModal";
 
 const AlbumModal = (props: AlbumModalProps) => {
-  const { images, onClose, onImageClick, selectedImageIndex } = props;
+  const { images, onClose, selectedImageIndex } = props;
+  const [showSingleImage, setShowSingleImage] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] =
+    useState(selectedImageIndex);
   const selectedImageRef = useRef<HTMLImageElement | null>(null);
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    if (selectedImageRef.current) {
+    if (!showSingleImage && selectedImageRef.current) {
       setTimeout(() => {
         selectedImageRef.current?.scrollIntoView({
           behavior: "smooth",
@@ -24,13 +28,30 @@ const AlbumModal = (props: AlbumModalProps) => {
         }
       }, 2200);
     }
-  }, [selectedImageIndex]);
+  }, [selectedImageIndex, showSingleImage]);
+
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index);
+    setShowSingleImage(true);
+  };
+
+  const handleBackToGallery = () => {
+    setShowSingleImage(false);
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-    }, 300); // Match this with the animation duration
+    }, 300);
   };
 
   return (
@@ -42,7 +63,27 @@ const AlbumModal = (props: AlbumModalProps) => {
       <div className="album-modal-overlay" onClick={handleClose} />
       <div className="album-modal-content">
         <header className="album-modal-header">
+          {showSingleImage && (
+            <button
+              className="album-modal-back-to-gallery-btn"
+              onClick={handleBackToGallery}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224 128a8 8 0 0 1-8 8H59.31l58.35 58.34a8 8 0 0 1-11.32 11.32l-72-72a8 8 0 0 1 0-11.32l72-72a8 8 0 0 1 11.32 11.32L59.31 120H216a8 8 0 0 1 8 8"
+                />
+              </svg>
+              Gallery
+            </button>
+          )}
           <button className="album-modal-close-btn" onClick={handleClose}>
+            Close
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -59,18 +100,30 @@ const AlbumModal = (props: AlbumModalProps) => {
             </svg>
           </button>
         </header>
-        <div className="album-modal-grid">
-          {images.map((image, index) => (
-            <div key={index} className="album-modal-img-box">
-              <img
-                src={image}
-                alt={`Image ${index + 1}`}
-                onClick={() => onImageClick(index)}
-                ref={index === selectedImageIndex ? selectedImageRef : null}
-              />
-            </div>
-          ))}
-        </div>
+
+        {showSingleImage ? (
+          <SingleImageModal
+            images={images}
+            currentIndex={currentImageIndex}
+            onClose={() => setShowSingleImage(false)}
+            onPrev={handlePrevImage}
+            onNext={handleNextImage}
+            onThumbnailClick={setCurrentImageIndex}
+          />
+        ) : (
+          <div className="album-modal-grid">
+            {images.map((image, index) => (
+              <div key={index} className="album-modal-img-box">
+                <img
+                  src={image}
+                  alt={`Image ${index + 1}`}
+                  onClick={() => handleImageClick(index)}
+                  ref={index === selectedImageIndex ? selectedImageRef : null}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
