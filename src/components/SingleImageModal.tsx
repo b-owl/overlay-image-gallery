@@ -8,18 +8,22 @@ const SingleImageModal = (props: SingleImageModalProps) => {
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
   const imageRefs = useRef<HTMLImageElement[]>([]);
+  const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setActiveIndex(currentIndex);
   }, [currentIndex]);
 
   useEffect(() => {
-    if (imageRefs.current[activeIndex]) {
-      imageRefs.current[activeIndex].scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+    if (thumbnailStripRef.current) {
+      const activeThumb = thumbnailStripRef.current.querySelector(".active");
+      if (activeThumb) {
+        activeThumb.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }
     }
   }, [activeIndex]);
 
@@ -34,10 +38,10 @@ const SingleImageModal = (props: SingleImageModalProps) => {
     if (Math.abs(diffX) > 50) {
       if (diffX > 0) {
         onNext();
-        setDirection("next");
+        // setDirection("next");
       } else {
         onPrev();
-        setDirection("prev");
+        // setDirection("prev");
       }
       setStartX(moveX);
     }
@@ -94,7 +98,7 @@ const SingleImageModal = (props: SingleImageModalProps) => {
         </svg>
       </button>
       {window.innerWidth > 468 && (
-        <div className="oig-thumbnail-strip">
+        <div className="oig-thumbnail-strip" ref={thumbnailStripRef}>
           {images.map((image, index) => (
             <div className="album-image-box" key={index}>
               <img

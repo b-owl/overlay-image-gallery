@@ -34,7 +34,7 @@ function App() {
         justifyContent: "cneter",
       }}
     >
-      <OverlayGallery width={650} height={400} grid="v1" images={imagesList} />
+      <OverlayGallery width={650} height={400} grid="v2" images={imagesList} />
     </div>
   );
 }
