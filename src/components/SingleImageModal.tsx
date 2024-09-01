@@ -49,22 +49,6 @@ const SingleImageModal = (props: SingleImageModalProps) => {
 
   return (
     <div className="oig-modal single-image-oig-modal">
-      <div
-        className="oig-main-image-container"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-      >
-        <img
-          src={images[activeIndex]}
-          alt={`Image ${activeIndex + 1}`}
-          className={`oig-main-image ${direction}`}
-          ref={(el) => (imageRefs.current[activeIndex] = el!)}
-          onAnimationEnd={() => setDirection(null)}
-        />
-        <div className="oig-image-counter">
-          {activeIndex + 1}/{images.length}
-        </div>
-      </div>
       <button className="oig-nav-btn oig-prev-btn" onClick={onPrev}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +65,23 @@ const SingleImageModal = (props: SingleImageModalProps) => {
           </g>
         </svg>
       </button>
+
+      <div
+        className="oig-main-image-container"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
+        <img
+          src={images[activeIndex]}
+          alt={`Image ${activeIndex + 1}`}
+          className={`oig-main-image ${direction}`}
+          ref={(el) => (imageRefs.current[activeIndex] = el!)}
+          onAnimationEnd={() => setDirection(null)}
+        />
+        <div className="oig-image-counter">
+          {activeIndex + 1}/{images.length}
+        </div>
+      </div>
       <button className="oig-nav-btn oig-next-btn" onClick={onNext}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

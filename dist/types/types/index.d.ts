@@ -16,7 +16,6 @@ export type ImageGalleryProps = BaseImageGalleryProps & (FullScreenProps | NonFu
 export type AlbumModalProps = {
     images: string[];
     onClose: () => void;
-    onImageClick: (index: number) => void;
     selectedImageIndex: number;
 };
 export type SingleImageModalProps = {
@@ -25,6 +24,6 @@ export type SingleImageModalProps = {
     onClose: () => void;
     onPrev: () => void;
     onNext: () => void;
-    onThumbnailClick: (index: number) => void;
+    onThumbnailClick?: (index: number) => void;
 };
 export {};
