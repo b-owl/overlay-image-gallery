@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { ImageGalleryProps } from "../types";
-
 import AlbumModal from "./AlbumModal";
 import SingleImageModal from "./SingleImageModal";
-
+import SkeletonLoader from "./SkeletonLoader";
 import "../styles/ImageGallery.css";
 
-const ImageGallery = (props: ImageGalleryProps) => {
+const ImageGallery: React.FC<ImageGalleryProps> = (props) => {
   const { images, width, height, grid, fullScreen } = props;
 
-  const [showAlbumModal, setShowAlbumModal] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [showAlbumModal, setShowAlbumModal] = useState<boolean>(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -31,6 +31,26 @@ const ImageGallery = (props: ImageGalleryProps) => {
   const closeAlbumModal = () => setShowAlbumModal(false);
 
   const gridClassName = grid === "v2" ? "grid-version2" : "grid-version1";
+
+  const cacheImage = useCallback((src: string) => {
+    return new Promise<string>((resolve, reject) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setLoadedImages((prev) => [...prev, src]);
+        resolve(src);
+      };
+      img.onerror = reject;
+    }) as Promise<string>;
+  }, []);
+
+  useEffect(() => {
+    images.forEach(cacheImage);
+  }, [images, cacheImage]);
+
+  const isImageLoaded = (src: string): boolean => {
+    return loadedImages.indexOf(src) !== -1;
+  };
 
   if (isMobile) {
     return (
@@ -53,10 +73,10 @@ const ImageGallery = (props: ImageGalleryProps) => {
   return (
     <section
       style={{
-        width: `${fullScreen ? "100%" : width}px`,
-        height: `${fullScreen ? "100%" : height}px`,
+        width: fullScreen ? "100%" : `${width}px`,
+        height: fullScreen ? "100%" : `${height}px`,
       }}
-      className={`oig-image-gallery`}
+      className="oig-image-gallery"
     >
       <div className={`oig-image-grid ${gridClassName}`}>
         {images.slice(0, 10).map((image, index) => (
@@ -65,7 +85,11 @@ const ImageGallery = (props: ImageGalleryProps) => {
             onClick={() => openAlbumModal(index)}
             className="oig-img-box"
           >
-            <img key={index} src={image} alt={`Image ${index + 1}`} />
+            {isImageLoaded(image) ? (
+              <img src={image} alt={`Image ${index + 1}`} />
+            ) : (
+              <SkeletonLoader width="100%" height="100%" />
+            )}
             {images.length > 10 && index === 9 && (
               <div className="oig-last-image">+{images.length - 10} Photos</div>
             )}

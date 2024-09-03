@@ -6,7 +6,8 @@
     "paths": {
       "*": ["src/*"]
     },
-    "target": "es5",
+    "target": "es2016",
+    "lib": ["dom", "es2016"],
     "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
