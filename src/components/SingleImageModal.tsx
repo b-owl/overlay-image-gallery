@@ -1,18 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
 import { SingleImageModalProps } from "../types";
 import "../styles/SingleImageModal.css";
+import SkeletonLoader from "./SkeletonLoader";
 
 const SingleImageModal = (props: SingleImageModalProps) => {
   const { images, currentIndex, onPrev, onNext, onThumbnailClick } = props;
   const [startX, setStartX] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
   const [activeIndex, setActiveIndex] = useState(currentIndex);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
   const imageRefs = useRef<HTMLImageElement[]>([]);
   const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setActiveIndex(currentIndex);
-  }, [currentIndex]);
+    setIsLoading(!loadedImages.has(currentIndex));
+  }, [currentIndex, loadedImages]);
 
   useEffect(() => {
     if (thumbnailStripRef.current) {
@@ -27,29 +31,54 @@ const SingleImageModal = (props: SingleImageModalProps) => {
     }
   }, [activeIndex]);
 
+  const handleImageLoad = (index: number) => {
+    setLoadedImages((prev) => new Set(prev).add(index));
+    if (index === activeIndex) {
+      setIsLoading(false);
+    }
+  };
+
   const handleTouchStart = (e: React.TouchEvent) => {
     setStartX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    if (isLoading) return;
+
     const moveX = e.touches[0].clientX;
     const diffX = startX - moveX;
 
     if (Math.abs(diffX) > 50) {
       if (diffX > 0) {
-        onNext();
-        // setDirection("next");
+        handleNext();
       } else {
-        onPrev();
-        // setDirection("prev");
+        handlePrev();
       }
       setStartX(moveX);
     }
   };
 
+  const handlePrev = () => {
+    const newIndex = (activeIndex - 1 + images.length) % images.length;
+    setActiveIndex(newIndex);
+    onPrev();
+    setIsLoading(!loadedImages.has(newIndex));
+  };
+
+  const handleNext = () => {
+    const newIndex = (activeIndex + 1) % images.length;
+    setActiveIndex(newIndex);
+    onNext();
+    setIsLoading(!loadedImages.has(newIndex));
+  };
+
   return (
     <div className="oig-modal single-image-oig-modal">
-      <button className="oig-nav-btn oig-prev-btn" onClick={onPrev}>
+      <button
+        className="oig-nav-btn oig-prev-btn"
+        onClick={handlePrev}
+        disabled={isLoading}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -71,18 +100,25 @@ const SingleImageModal = (props: SingleImageModalProps) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
+        {isLoading && <SkeletonLoader width="100%" height="100%" />}
         <img
           src={images[activeIndex]}
           alt={`Image ${activeIndex + 1}`}
           className={`oig-main-image ${direction}`}
           ref={(el) => (imageRefs.current[activeIndex] = el!)}
           onAnimationEnd={() => setDirection(null)}
+          onLoad={() => handleImageLoad(activeIndex)}
+          style={{ display: isLoading ? "none" : "block" }}
         />
         <div className="oig-image-counter">
           {activeIndex + 1}/{images.length}
         </div>
       </div>
-      <button className="oig-nav-btn oig-next-btn" onClick={onNext}>
+      <button
+        className="oig-nav-btn oig-next-btn"
+        onClick={handleNext}
+        disabled={isLoading}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -109,6 +145,7 @@ const SingleImageModal = (props: SingleImageModalProps) => {
                   index === activeIndex ? "active" : ""
                 }`}
                 onClick={() => onThumbnailClick && onThumbnailClick(index)}
+                onLoad={() => handleImageLoad(index)}
               />
             </div>
           ))}

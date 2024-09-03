@@ -49,9 +49,9 @@ const AlbumModal = (props: AlbumModalProps) => {
 
   const handleClose = () => {
     setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-    }, 300);
+    onClose();
+    // setTimeout(() => {
+    // }, 300);
   };
 
   return (
