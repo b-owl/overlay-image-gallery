@@ -3,7 +3,7 @@
   "name": "overlay-image-gallery",
   "description": "Overlay Image Gallery is a multi-step image gallery that allows users to click or swipe to navigate between images.",
   "private": false,
-  "version": "1.0.16",
+  "version": "1.0.17",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
