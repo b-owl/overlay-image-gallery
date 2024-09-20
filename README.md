@@ -8,7 +8,7 @@
 
 ## Preview
 
-![Preview](https://i.imgur.com/85PRv0b.gif)
+![Preview](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnhyODN6YWYwMTNxeGF6aXB3enJ0YW1xZjI5aTF2djg2cDV0OWw4YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/z2O8LoBk5LZqLuSI5j/giphy.gif)
 
 [`Live Demo`](https://b-owl.github.io/overlay-image-gallery/)
 
