@@ -15,7 +15,6 @@ body {
 
 img {
   background-size: cover;
-  object-fit: cover !important;
   background-position: center;
   background-repeat: no-repeat;
 }

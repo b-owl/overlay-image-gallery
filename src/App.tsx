@@ -18,7 +18,7 @@ function App() {
     "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=600",
     "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&w=600",
     "https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&w=600"
+    "https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&w=600",
   ];
 
   return (
@@ -31,7 +31,13 @@ function App() {
         justifyContent: "cneter",
       }}
     >
-      <OverlayGallery width={650} height={400} grid="v1" images={imagesList} />
+      <OverlayGallery
+        width={650}
+        height={400}
+        grid="v1"
+        fitMode="cover"
+        images={imagesList}
+      />
     </div>
   );
 }

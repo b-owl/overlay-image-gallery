@@ -21,7 +21,6 @@
 .oig-image-grid .oig-img-box > img {
   width: inherit;
   height: inherit;
-  object-fit: cover !important;
 }
 
 .oig-image-grid.grid-version1 .oig-img-box:first-child {

@@ -1,6 +1,17 @@
 type BaseImageGalleryProps = {
   images: string[];
   grid: "v1" | "v2";
+  fitMode?:
+    | "contain"
+    | "cover"
+    | "fill"
+    | "none"
+    | "scale-down"
+    | "inherit"
+    | "initial"
+    | "revert"
+    | "revert-layer"
+    | "unset";
 };
 
 type FullScreenProps = {

@@ -6,7 +6,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import "../styles/ImageGallery.css";
 
 const ImageGallery: React.FC<ImageGalleryProps> = (props) => {
-  const { images, width, height, grid, fullScreen } = props;
+  const { images, width, height, grid, fullScreen, fitMode } = props;
 
   const [showAlbumModal, setShowAlbumModal] = useState<boolean>(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
@@ -86,7 +86,13 @@ const ImageGallery: React.FC<ImageGalleryProps> = (props) => {
             className="oig-img-box"
           >
             {isImageLoaded(image) ? (
-              <img src={image} alt={`Image ${index + 1}`} />
+              <img
+                style={{
+                  objectFit: fitMode || "contain",
+                }}
+                src={image}
+                alt={`Image ${index + 1}`}
+              />
             ) : (
               <SkeletonLoader width="100%" height="100%" />
             )}
